@@ -61,7 +61,7 @@ class mobile {
         [$meeting->intro, $meeting->introformat] = external_format_text($meeting->intro, $meeting->introformat, $context, 'mod_teamsmeeting', 'intro');
 
         $details = teamsmeeting_print_details_dates($meeting, "text");
-        $office = get_office();
+        $office = teamsmeeting_get_office();
         $gotoresource = true;
 
         if ($meeting->reuse_meeting == "0") {

@@ -91,7 +91,7 @@ function teamsmeeting_add_instance($data, $mform) {
         $data->timemodified = time();
 
         try {
-            $office = get_office();
+            $office = teamsmeeting_get_office();
             $userid = $office->getUserId($USER->email);
         } catch (Throwable $th) {
             new Exception(get_string('notfound', 'mod_teamsmeeting'));
@@ -182,7 +182,7 @@ function teamsmeeting_update_instance($data, $mform) {
         if ($data->opendate != $meeting->opendate || $data->closedate != $meeting->closedate || $meeting->name != $data->name) {
             // We update the event dates.
             try {
-                $office = get_office();
+                $office = teamsmeeting_get_office();
                 $creator = $DB->get_record('user', array('id' => $meeting->creator_id));
                 $userid = $office->getUserId($creator->email);
             } catch (Throwable $th) {
@@ -279,7 +279,7 @@ function teamsmeeting_get_coursemodule_info($coursemodule) {
  * @return Office365
  * @throws dml_exception
  */
-function get_office()
+function teamsmeeting_get_office()
 {
     return new Office365(get_config('mod_teamsmeeting', 'tenant_id'), get_config('mod_teamsmeeting', 'client_id'), get_config('mod_teamsmeeting', 'client_secret'));
 }

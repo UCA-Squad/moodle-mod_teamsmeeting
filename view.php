@@ -52,7 +52,7 @@ $params = array(
 
 $PAGE->set_url('/mod/teamsmeeting/view.php', array('id' => $cm->id));
 
-$office = get_office();
+$office = teamsmeeting_get_office();
 if ($resource->reuse_meeting == "0") {
     // Ponctual online meeting.
     try {
