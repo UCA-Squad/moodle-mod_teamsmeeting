@@ -16,9 +16,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'teams_meeting', language 'fr'
+ * Strings for component 'teamsmeeting', language 'fr'
  *
- * @package   mod_teams_meeting
+ * @package   mod_teamsmeeting
  * @copyright 2022 Anthony Durif, Université Clermont Auvergne
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -28,8 +28,8 @@ $string['modulename_help'] = 'Module permettant de créer une réunion Teams pou
 $string['modulenameplural'] = 'Réunion Teams ';
 $string['pluginname'] = 'Réunion Teams';
 $string['pluginadministration'] = 'Réunion Teams';
-$string['teams:addinstance'] = 'Ajouter une réunion Teams';
-$string['teams:view'] = 'Visualiser une réunion Teams';
+$string['teamsmeeting:addinstance'] = 'Ajouter une réunion Teams';
+$string['teamsmeeting:view'] = 'Visualiser une réunion Teams';
 $string['privacy:metadata'] = 'Le module Réunion Teams ne stocke aucune donnée personnelle.';
 $string['notunique'] = 'L\'adresse email n\'est pas unique dans l\'Active Directory Azure.';
 $string['notfound'] = 'L\'adresse email n\'a pas pu être reliée à un utilisateur dans l\'Active Directory Azure.';

@@ -15,18 +15,18 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Privacy Subsystem implementation for mod_teams_meeting
+ * Privacy Subsystem implementation for mod_teamsmeeting
  *
- * @package    mod_teams_meeting
+ * @package    mod_teamsmeeting
  * @copyright  2022 Anthony Durif, Université Clermont Auvergne
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-namespace mod_teams_meeting\privacy;
+namespace mod_teamsmeeting\privacy;
 
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * The mod_teams_meeting module does not store any data.
+ * The mod_teamsmeeting module does not store any data.
  *
  * @copyright  2022 Anthony Durif, Université Clermont Auvergne
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later

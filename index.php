@@ -17,18 +17,18 @@
 /**
  * Displays information about all the teams meeting modules in the requested course
  *
- * @package   mod_teams_meeting
+ * @package   mod_teamsmeeting
  * @copyright 2022 Anthony Durif, Université Clermont Auvergne
  */
 
 require_once("../../config.php");
-require_once($CFG->dirroot.'/mod/teams_meeting/lib.php');
+require_once($CFG->dirroot.'/mod/teamsmeeting/lib.php');
 // For this type of page this is the course id.
 $id = required_param('id', PARAM_INT);
 
 $course = $DB->get_record('course', array('id' => $id), '*', MUST_EXIST);
 require_login($course);
-$PAGE->set_url('/mod/teams_meeting/index.php', array('id' => $id));
+$PAGE->set_url('/mod/teamsmeeting/index.php', array('id' => $id));
 $PAGE->set_pagelayout('incourse');
 
 $params = array(
@@ -36,15 +36,15 @@ $params = array(
 );
 
 // Print the header.
-$strplural = get_string("modulenameplural", "teams_meeting");
+$strplural = get_string("modulenameplural", "teamsmeeting");
 $PAGE->navbar->add($strplural);
 $PAGE->set_title($strplural);
 $PAGE->set_heading($course->fullname);
 echo $OUTPUT->header();
 echo $OUTPUT->heading(format_string($strplural));
-require_capability('mod/teams_meeting:view', $params['context']);
+require_capability('mod/teamsmeeting:view', $params['context']);
 
-$meetings = get_all_instances_in_course('teams_meeting', $course);
+$meetings = get_all_instances_in_course('teamsmeeting', $course);
 if (!$meetings) {
     notice('There are no instances of teams resources', "../../course/view.php?id=$course->id");
     die;
@@ -56,7 +56,7 @@ $table->head = array(get_string('sectionname', 'format_'.$course->format), get_s
 $table->align = array('left', 'left', 'center');
 
 foreach ($meetings as $meeting) {
-    if (has_capability('mod/teams_meeting:view', context_module::instance($meeting->coursemodule))) {
+    if (has_capability('mod/teamsmeeting:view', context_module::instance($meeting->coursemodule))) {
         if (!$meeting->visible) {
             // Show dimmed if the mod is hidden.
             $link = '<a class="dimmed" href="view.php?id=' . $meeting->coursemodule . '">' . format_string($meeting->name) . '</a>';

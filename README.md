@@ -24,10 +24,10 @@ Installation
 1. Local plugin installation
 
 - With git:
-> git clone https://github.com/UCA-Squad/moodle-mod_teams_meeting.git mod/teams_meeting
+> git clone https://github.com/UCA-Squad/moodle-mod_teamsmeeting.git mod/teamsmeeting
 
 - Download way:
-> Download the zip from <a href="https://github.com/UCA-Squad/moodle-mod_teams_meeting/archive/refs/heads/main.zip" target="_blank">https://github.com/UCA-Squad/moodle-mod_teams_meeting/archive/refs/heads/main.zip </a>, unzip it in mod/ folder and rename it "teams_meeting" if necessary or install it from the "Install plugin" page if you have the right permissions.
+> Download the zip from <a href="https://github.com/UCA-Squad/moodle-mod_teamsmeeting/archive/refs/heads/main.zip" target="_blank">https://github.com/UCA-Squad/moodle-mod_teamsmeeting/archive/refs/heads/main.zip </a>, unzip it in mod/ folder and rename it "teamsmeeting" if necessary or install it from the "Install plugin" page if you have the right permissions.
  
 2. Get Microsoft Graph libs (https://packagist.org/packages/microsoft/microsoft-graph) used in the plugin. Go to the new teams/ folder and use the command ```composer install```.<br/>
 You can also get the latest libs versions by using ```composer update```. 

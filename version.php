@@ -17,16 +17,16 @@
 /**
  * Resource teams meeting module version information
  *
- * @package    mod_teams_meeting
+ * @package    mod_teamsmeeting
  * @copyright  2022 Anthony Durif, Université Clermont Auvergne
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2022080600; // The current plugin version (Date: YYYYMMDDXX).
+$plugin->version   = 2022080700; // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2019051100; // Requires this Moodle version
-$plugin->component = 'mod_teams_meeting'; // Full name of the plugin (used for diagnostics)
+$plugin->component = 'mod_teamsmeeting'; // Full name of the plugin (used for diagnostics)
 $plugin->cron      = 0;
 $plugin->release = 'v3.11-r1';
 $plugin->maturity  = MATURITY_STABLE;

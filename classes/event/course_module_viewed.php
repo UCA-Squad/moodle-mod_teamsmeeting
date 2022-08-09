@@ -15,20 +15,20 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * The mod_teams_meeting course module viewed event.
- * @package  mod_teams_meeting
+ * The mod_teamsmeeting course module viewed event.
+ * @package  mod_teamsmeeting
  * @copyright  2022 Anthony Durif, Université Clermont Auvergne
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
-namespace mod_teams_meeting\event;
+namespace mod_teamsmeeting\event;
 
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * The mod_teams_meeting course module viewed event class.
+ * The mod_teamsmeeting course module viewed event class.
  *
- * @package    mod_teams_meeting
+ * @package    mod_teamsmeeting
  * @since      Moodle 3.8
  * @copyright  2022 Anthony Durif, Université Clermont Auvergne
  */

@@ -15,22 +15,22 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Provides {@see \mod_teams_meeting\output\mobile} class.
+ * Provides {@see \mod_teamsmeeting\output\mobile} class.
  *
  * @copyright  2022 Anthony Durif, Université Clermont Auvergne
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace mod_teams_meeting\output;
+namespace mod_teamsmeeting\output;
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot . '/mod/teams_meeting/lib.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/lib.php');
 
 /**
  * Controls the display of the plugin in the Mobile App.
  *
- * @package   mod_teams_meeting
+ * @package   mod_teamsmeeting
  * @category  output
  * @copyright  2022 Anthony Durif, Université Clermont Auvergne
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -47,20 +47,20 @@ class mobile {
         global $OUTPUT, $USER, $DB;
 
         $args = (object) $args;
-        $cm = get_coursemodule_from_id('teams_meeting', $args->cmid);
+        $cm = get_coursemodule_from_id('teamsmeeting', $args->cmid);
         $context = \context_module::instance($cm->id);
 
         require_login($args->courseid, false, $cm, true, true);
-        require_capability('mod/teams_meeting:view', $context);
+        require_capability('mod/teamsmeeting:view', $context);
 
-        $meeting = $DB->get_record('teams_meeting', ['id' => $cm->instance], '*', MUST_EXIST);
+        $meeting = $DB->get_record('teamsmeeting', ['id' => $cm->instance], '*', MUST_EXIST);
         $course = get_course($cm->course);
 
         // Pre-format some of the texts for the mobile app.
         $meeting->name = external_format_string($meeting->name, $context);
-        [$meeting->intro, $meeting->introformat] = external_format_text($meeting->intro, $meeting->introformat, $context, 'mod_teams_meeting', 'intro');
+        [$meeting->intro, $meeting->introformat] = external_format_text($meeting->intro, $meeting->introformat, $context, 'mod_teamsmeeting', 'intro');
 
-        $details = teams_meeting_print_details_dates($meeting, "text");
+        $details = teamsmeeting_print_details_dates($meeting, "text");
         $office = get_office();
         $gotoresource = true;
 
@@ -68,27 +68,27 @@ class mobile {
             try {
                 $office->getMeetingObject($meeting);
             } catch (\Exception $e) {
-                $details = get_string('meetingnotfound', 'mod_teams_meeting');
+                $details = get_string('meetingnotfound', 'mod_teamsmeeting');
                 $gotoresource = false;
             }
             if ($meeting->opendate != 0) {
-                if (strtotime("now") < $meeting->opendate && !has_capability('mod/teams_meeting:addinstance', $context)) {
-                    $details = sprintf(get_string('meetingnotavailable', 'mod_teams_meeting'), teams_meeting_print_details_dates($meeting, "text"));
+                if (strtotime("now") < $meeting->opendate && !has_capability('mod/teamsmeeting:addinstance', $context)) {
+                    $details = sprintf(get_string('meetingnotavailable', 'mod_teamsmeeting'), teamsmeeting_print_details_dates($meeting, "text"));
                     $gotoresource = false;
                 }
             }
-            if ($meeting->closedate != 0 && strtotime("now") > $meeting->closedate && !has_capability('mod/teams_meeting:addinstance', $context)) {
-                $details = sprintf(get_string('meetingnotavailable', 'mod_teams_meeting'), teams_meeting_print_details_dates($meeting, "text"));
+            if ($meeting->closedate != 0 && strtotime("now") > $meeting->closedate && !has_capability('mod/teamsmeeting:addinstance', $context)) {
+                $details = sprintf(get_string('meetingnotavailable', 'mod_teamsmeeting'), teamsmeeting_print_details_dates($meeting, "text"));
                 $gotoresource = false;
             }
             if ($gotoresource) {
-                $details = teams_meeting_print_details_dates($meeting, "text");
+                $details = teamsmeeting_print_details_dates($meeting, "text");
                 $gotoresource = true;
             }
         }
 
         if (!filter_var($meeting->externalurl, FILTER_VALIDATE_URL)) {
-            $details = get_string('meetingnotfound', 'mod_teams_meeting');
+            $details = get_string('meetingnotfound', 'mod_teamsmeeting');
             $gotoresource = false;
         }
 
@@ -107,7 +107,7 @@ class mobile {
             'templates' => [
                 [
                     'id' => 'main',
-                    'html' => $OUTPUT->render_from_template('mod_teams_meeting/mobile_view', $data),
+                    'html' => $OUTPUT->render_from_template('mod_teamsmeeting/mobile_view', $data),
                 ],
             ],
             'javascript' => '',

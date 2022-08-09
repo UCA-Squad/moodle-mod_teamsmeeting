@@ -17,7 +17,7 @@
 /**
  * Declares the Mobile App addons provided by this plugin.
  *
- * @package     mod_teams_meeting
+ * @package     mod_teamsmeeting
  * @copyright   2022 Anthony Durif, Université Clermont Auvergne
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -25,11 +25,11 @@
 defined('MOODLE_INTERNAL') || die();
 
 $addons = [
-    'mod_teams_meeting' => [
+    'mod_teamsmeeting' => [
         'handlers' => [
             'courseteams' => [
                 'displaydata' => [
-                    'icon' => $CFG->wwwroot . '/mod/teams_meeting/pix/icon.png',
+                    'icon' => $CFG->wwwroot . '/mod/teamsmeeting/pix/icon.png',
                     'class' => '',
                 ],
 
@@ -38,9 +38,9 @@ $addons = [
             ],
         ],
         'lang' => [
-            ['pluginname', 'mod_teams_meeting'],
-            ['gotoresource', 'mod_teams_meeting'],
-            ['title_courseurl', 'mod_teams_meeting'],
+            ['pluginname', 'mod_teamsmeeting'],
+            ['gotoresource', 'mod_teamsmeeting'],
+            ['title_courseurl', 'mod_teamsmeeting'],
         ],
     ],
 ];

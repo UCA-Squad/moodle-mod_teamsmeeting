@@ -17,7 +17,7 @@
 /**
  * Capability definitions for the teams meeting module.
  *
- * @package    mod_teams_meeting
+ * @package    mod_teamsmeeting
  * @copyright  2022 Anthony Durif, Université Clermont Auvergne
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die;
 
 $capabilities = array(
-    'mod/teams_meeting:view'   => array(
+    'mod/teamsmeeting:view'   => array(
         'captype'       => 'read',
         'contextlevel'  => CONTEXT_MODULE,
         'archetypes' => array(
@@ -38,7 +38,7 @@ $capabilities = array(
         )
     ),
 
-    'mod/teams_meeting:addinstance' => array(
+    'mod/teamsmeeting:addinstance' => array(
         'riskbitmask'   => RISK_XSS,
         'captype'       => 'write',
         'contextlevel'  => CONTEXT_COURSE,

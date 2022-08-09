@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Defines message providers for the mod_teams_meeting plugins (types of messages being sent).
+ * Defines message providers for the mod_teamsmeeting plugins (types of messages being sent).
  * Messages could be send after an online meeting creation in the plugin.
  *
- * @package   mod_teams_meeting
+ * @package   mod_teamsmeeting
  * @category  message
  * @copyright 2022 Anthony Durif, Université Clermont Auvergne
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later

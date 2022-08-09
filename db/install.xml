@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="mod/teams_meeting/db" VERSION="20200811" COMMENT="XMLDB file for the resource teams meeting module"
+<XMLDB PATH="mod/teamsmeeting/db" VERSION="20200811" COMMENT="XMLDB file for the resource teams meeting module"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
   <TABLES>
-    <TABLE NAME="teams_meeting" COMMENT="each record is one teams meeting (~url of the meeting)">
+    <TABLE NAME="teamsmeeting" COMMENT="each record is one teams meeting (~url of the meeting)">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="course" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>

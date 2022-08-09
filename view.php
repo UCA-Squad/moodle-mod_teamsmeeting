@@ -18,7 +18,7 @@
 /**
  * Teams meeting module main user interface
  *
- * @package    mod_teams_meeting
+ * @package    mod_teamsmeeting
  * @copyright  2022 Anthony Durif, Université Clermont Auvergne
  */
 
@@ -26,31 +26,31 @@ require_once('../../config.php');
 require_once('lib.php');
 require_once($CFG->dirroot. '/mod/url/locallib.php');
 require_once($CFG->libdir . '/completionlib.php');
-require_once($CFG->dirroot. '/mod/teams_meeting/vendor/autoload.php');
+require_once($CFG->dirroot. '/mod/teamsmeeting/vendor/autoload.php');
 
 $id = required_param('id', PARAM_INT); // Course Module ID.
 $u = optional_param('u', 0, PARAM_INT); // URL instance id.
 $redirect = optional_param('redirect', 0, PARAM_BOOL);
 
 if ($u) {  // Two ways to specify the module.
-    $resource = $DB->get_record('teams_meeting', array('id' => $u), '*', MUST_EXIST);
+    $resource = $DB->get_record('teamsmeeting', array('id' => $u), '*', MUST_EXIST);
     $cm = get_coursemodule_from_instance('teams', $resource->id, $resource->course, false, MUST_EXIST);
 } else {
-    $cm = get_coursemodule_from_id('teams_meeting', $id, 0, false, MUST_EXIST);
-    $resource = $DB->get_record('teams_meeting', array('id' => $cm->instance), '*', MUST_EXIST);
+    $cm = get_coursemodule_from_id('teamsmeeting', $id, 0, false, MUST_EXIST);
+    $resource = $DB->get_record('teamsmeeting', array('id' => $cm->instance), '*', MUST_EXIST);
 }
 $course = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
 
 require_course_login($course, true, $cm);
 $context = context_module::instance($cm->id);
-require_capability('mod/teams_meeting:view', $context);
+require_capability('mod/teamsmeeting:view', $context);
 
 $params = array(
     'context' => $context,
     'objectid' => $resource->id
 );
 
-$PAGE->set_url('/mod/teams_meeting/view.php', array('id' => $cm->id));
+$PAGE->set_url('/mod/teamsmeeting/view.php', array('id' => $cm->id));
 
 $office = get_office();
 if ($resource->reuse_meeting == "0") {
@@ -58,29 +58,29 @@ if ($resource->reuse_meeting == "0") {
     try {
         $office->getMeetingObject($resource);
     } catch (Exception $e) {
-        notice(get_string('meetingnotfound', 'mod_teams_meeting'), new moodle_url('/course/view.php', array('id' => $cm->course)));
+        notice(get_string('meetingnotfound', 'mod_teamsmeeting'), new moodle_url('/course/view.php', array('id' => $cm->course)));
         die;
     }
 
     if ($resource->opendate != 0) {
-        if (strtotime("now") < $resource->opendate && !has_capability('mod/teams_meeting:addinstance', $context)) {
-            notice(sprintf(get_string('meetingnotavailable', 'mod_teams_meeting'), teams_print_details_dates($resource, "text")), new moodle_url('/course/view.php', array('id' => $cm->course)));
+        if (strtotime("now") < $resource->opendate && !has_capability('mod/teamsmeeting:addinstance', $context)) {
+            notice(sprintf(get_string('meetingnotavailable', 'mod_teamsmeeting'), teams_print_details_dates($resource, "text")), new moodle_url('/course/view.php', array('id' => $cm->course)));
             die;
         }
     }
-    if ($resource->closedate != 0 && strtotime("now") > $resource->closedate && !has_capability('mod/teams_meeting:addinstance', $context)) {
-        notice(sprintf(get_string('meetingnotavailable', 'mod_teams_meeting'), teams_print_details_dates($resource, "text")), new moodle_url('/course/view.php', array('id' => $cm->course)));
+    if ($resource->closedate != 0 && strtotime("now") > $resource->closedate && !has_capability('mod/teamsmeeting:addinstance', $context)) {
+        notice(sprintf(get_string('meetingnotavailable', 'mod_teamsmeeting'), teams_print_details_dates($resource, "text")), new moodle_url('/course/view.php', array('id' => $cm->course)));
         die;
     }
 }
 
 if (!filter_var($resource->externalurl, FILTER_VALIDATE_URL)) {
     // Incorrect Teams meeting url ?
-    notice(get_string('meetingnotfound', 'mod_teams_meeting'), new moodle_url('/course/view.php', array('id' => $cm->course)));
+    notice(get_string('meetingnotfound', 'mod_teamsmeeting'), new moodle_url('/course/view.php', array('id' => $cm->course)));
     die;
 }
 
-$event = \mod_teams_meeting\event\course_module_viewed::create($params);
+$event = \mod_teamsmeeting\event\course_module_viewed::create($params);
 $event->add_record_snapshot('course_modules', $cm);
 $event->add_record_snapshot('course', $course);
 $event->add_record_snapshot('teams', $resource);
@@ -144,6 +144,6 @@ switch ($displaytype) {
         url_display_frame($resource, $cm, $course);
         break;
     default:
-        teams_meeting_print_workaround($resource, $cm, $course); // Specific display to add custom information.
+        teamsmeeting_print_workaround($resource, $cm, $course); // Specific display to add custom information.
         break;
 }

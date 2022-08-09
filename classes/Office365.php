@@ -28,7 +28,7 @@ use Microsoft\Graph\Http;
  * The purpose of this class is to collect needed functions in the plugin and all API calls
  * to the Microsoft Graph API.
  *
- * @package    mod_teams_meeting
+ * @package    mod_teamsmeeting
  * @copyright  2022 Anthony Durif, Université Clermont Auvergne
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @since      Moodle 3.8
@@ -157,7 +157,7 @@ class Office365
                 ->execute();
 
             if (count($user) > 1) {
-                throw new Exception(get_string('notunique', 'mod_teams_meeting'));
+                throw new Exception(get_string('notunique', 'mod_teamsmeeting'));
             }
 
             return ($user[0]) ? $user[0]->getId() : null;
@@ -187,7 +187,7 @@ class Office365
         }
         else {
             // If close date is empty we use configuration setting to fix the end of the meeting to avoid confusions.
-            $default_end = date('Y-m-d\TH:i:s.0000000', strtotime($start->format('Y-m-d\TH:i:s.0000000') . " " . get_config('mod_teams_meeting', 'meeting_default_duration')));
+            $default_end = date('Y-m-d\TH:i:s.0000000', strtotime($start->format('Y-m-d\TH:i:s.0000000') . " " . get_config('mod_teamsmeeting', 'meeting_default_duration')));
             $event->setEnd(['dateTime' => $default_end, 'timeZone' => timezone_name_get($start->getTimeZone())]);
         }
         $event->setSubject($subject);
@@ -233,7 +233,7 @@ class Office365
     public function updateBroadcastEvent($event_id, $datas, $user)
     {
         $event = new \Microsoft\Graph\Model\Event();
-        $event->setSubject(str_replace(get_string('meeting_prefix', 'mod_teams_meeting'), '', $datas->name));
+        $event->setSubject(str_replace(get_string('meeting_prefix', 'mod_teamsmeeting'), '', $datas->name));
         $start = ($datas->opendate > 0) ? new DateTime(date('Y-m-d\TH:i:s.0000000', $datas->opendate)) : new DateTime('now');
         $event->setStart(['dateTime' => $start->format('Y-m-d\TH:i:s.0000000'), 'timeZone' => timezone_name_get($start->getTimeZone())]);
         if ($datas->closedate > 0) {
@@ -242,7 +242,7 @@ class Office365
         }
         else {
             // If close date is empty we use configuration setting to fix the end of the meeting to avoid confusions.
-            $default_end = date('Y-m-d\TH:i:s.0000000', strtotime($start->format('Y-m-d\TH:i:s.0000000') . " " . get_config('mod_teams_meeting', 'meeting_default_duration')));
+            $default_end = date('Y-m-d\TH:i:s.0000000', strtotime($start->format('Y-m-d\TH:i:s.0000000') . " " . get_config('mod_teamsmeeting', 'meeting_default_duration')));
             $event->setEnd(['dateTime' => $default_end, 'timeZone' => timezone_name_get($start->getTimeZone())]);
         }
         $data = $event->jsonSerialize();

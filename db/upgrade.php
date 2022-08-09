@@ -17,7 +17,7 @@
 /**
  * List upgrade changes of the plugin.
  *
- * @package    mod_teams_meeting
+ * @package    mod_teamsmeeting
  * @copyright  2022 Anthony Durif, Université Clermont Auvergne
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -28,6 +28,6 @@ defined('MOODLE_INTERNAL') || die();
  * @param int $oldversion the version we are upgrading from
  * @return bool result
  */
-function xmldb_teams_meeting_upgrade($oldversion) {
+function xmldb_teamsmeeting_upgrade($oldversion) {
     return true;
 }

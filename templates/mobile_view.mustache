@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template mod_teams_meeting/mobile_view
+    @template mod_teamsmeeting/mobile_view
 
     Render the main view for the mobile app.
 
@@ -51,7 +51,7 @@
 <div>
     <core-course-module-description
             description="<% meeting.intro %>"
-            component="mod_teams_meeting"
+            component="mod_teamsmeeting"
             componentId="<% cmid %>">
     </core-course-module-description>
 
@@ -70,7 +70,7 @@
             <ion-item>
                 <button ion-button block core-link capture="true" href="<% defaulturl %>">
                     <ion-icon name="link" role="img" start class="icon icon-md ion-md-link" aria-label="link" style="padding-right: .3em;"></ion-icon>
-                    {{ 'plugin.mod_teams_meeting.title_courseurl' | translate }}
+                    {{ 'plugin.mod_teamsmeeting.title_courseurl' | translate }}
                 </button>
             </ion-item>
         <%/ gotoresource %>
@@ -78,7 +78,7 @@
             <ion-item>
                 <button ion-button block core-link capture="true" href="<% meeting.externalurl %>">
                     <ion-icon name="link" role="img" start class="icon icon-md ion-md-link" aria-label="link" style="padding-right: .3em;"></ion-icon>
-                    {{ 'plugin.mod_teams_meeting.gotoresource' | translate }}
+                    {{ 'plugin.mod_teamsmeeting.gotoresource' | translate }}
                 </button>
             </ion-item>
         <%/ gotoresource %>

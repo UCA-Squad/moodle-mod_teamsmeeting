@@ -16,38 +16,38 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Mandatory public API of teams_meeting module
+ * Mandatory public API of teamsmeeting module
  *
- * @package    mod_teams_meeting
+ * @package    mod_teamsmeeting
  * @copyright  2022 Anthony Durif, Université Clermont Auvergne
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die;
 
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Graph.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Core/GraphConstants.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Http/GraphRequest.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Http/GraphResponse.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Model/Entity.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Model/DirectoryObject.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Model/User.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Model/Group.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Model/Team.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Model/OnlineMeeting.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Model/OnlineMeetingInfo.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Model/Identity.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Model/IdentitySet.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Model/MeetingParticipantInfo.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Model/MeetingParticipants.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Model/Recipient.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Model/AttendeeBase.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Model/Attendee.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Model/DateTimeTimeZone.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Model/ItemBody.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Model/OutlookItem.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/vendor/microsoft/microsoft-graph/src/Model/Event.php');
-require_once($CFG->dirroot . '/mod/teams_meeting/classes/Office365.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Graph.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Core/GraphConstants.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Http/GraphRequest.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Http/GraphResponse.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Model/Entity.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Model/DirectoryObject.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Model/User.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Model/Group.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Model/Team.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Model/OnlineMeeting.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Model/OnlineMeetingInfo.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Model/Identity.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Model/IdentitySet.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Model/MeetingParticipantInfo.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Model/MeetingParticipants.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Model/Recipient.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Model/AttendeeBase.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Model/Attendee.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Model/DateTimeTimeZone.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Model/ItemBody.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Model/OutlookItem.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/vendor/microsoft/microsoft-graph/src/Model/Event.php');
+require_once($CFG->dirroot . '/mod/teamsmeeting/classes/Office365.php');
 require_once($CFG->dirroot . '/calendar/lib.php');
 
 /**
@@ -55,7 +55,7 @@ require_once($CFG->dirroot . '/calendar/lib.php');
  * @param string $feature FEATURE_xx constant for requested feature
  * @return mixed True if module supports feature, false if not, null if doesn't know
  */
-function teams_meeting_supports($feature) {
+function teamsmeeting_supports($feature) {
     switch($feature) {
         case FEATURE_MOD_ARCHETYPE:           return MOD_ARCHETYPE_RESOURCE;
         case FEATURE_GROUPS:                  return false;
@@ -76,7 +76,7 @@ function teams_meeting_supports($feature) {
  * @param object $mform the form.
  * @return int the new teams instance id
  */
-function teams_meeting_add_instance($data, $mform) {
+function teamsmeeting_add_instance($data, $mform) {
     global $CFG, $DB, $USER, $COURSE;
 
     require_once($CFG->dirroot.'/mod/url/locallib.php');
@@ -94,7 +94,7 @@ function teams_meeting_add_instance($data, $mform) {
             $office = get_office();
             $userid = $office->getUserId($USER->email);
         } catch (Throwable $th) {
-            new Exception(get_string('notfound', 'mod_teams_meeting'));
+            new Exception(get_string('notfound', 'mod_teamsmeeting'));
         }
 
         if (empty($data->useopendate)) {
@@ -116,9 +116,9 @@ function teams_meeting_add_instance($data, $mform) {
             $data->closedate = ($data->closedate > 0) ? $data->closedate : strtotime($meeting->getEnd()->getDateTime());
 
             if ($data->externalurl != null) {
-                if (get_config('mod_teams_meeting', 'notif_mail') == true) {
+                if (get_config('mod_teamsmeeting', 'notif_mail') == true) {
                     // Send meeting link to the creator.
-                    $text = sprintf(get_string('create_mail_content', 'mod_teams_meeting'), $data->name, $COURSE->fullname);
+                    $text = sprintf(get_string('create_mail_content', 'mod_teamsmeeting'), $data->name, $COURSE->fullname);
                     $html = html_writer::start_tag('div') . PHP_EOL;
                     $html .= html_writer::tag('p', str_replace("\\n", "<br>", $text)) . PHP_EOL;
                     $text .= $meeting->getJoinWebUrl();
@@ -128,15 +128,15 @@ function teams_meeting_add_instance($data, $mform) {
                     // Creation notification.
                     $message = new \core\message\message();
                     $message->courseid = $COURSE->id;
-                    $message->component = 'mod_teams_meeting';
+                    $message->component = 'mod_teamsmeeting';
                     $message->name = 'meetingconfirm';
                     $message->userfrom = get_admin();
                     $message->userto = $USER;
-                    $message->subject = get_string('create_mail_title', 'mod_teams_meeting');
+                    $message->subject = get_string('create_mail_title', 'mod_teamsmeeting');
                     $message->fullmessage = $text;
                     $message->fullmessageformat = FORMAT_PLAIN;
                     $message->fullmessagehtml = $html;
-                    $message->smallmessage = get_string('create_mail_title', 'mod_teams_meeting');
+                    $message->smallmessage = get_string('create_mail_title', 'mod_teamsmeeting');
                     $message->notification = 1;
                     message_send($message);
                 }
@@ -145,7 +145,7 @@ function teams_meeting_add_instance($data, $mform) {
 
         $data->creator_id = $USER->id;
         $data->id = $DB->insert_record('teams', $data); // Insert in database.
-        teams_meeting_set_events($data); // Create meeting events if defined.
+        teamsmeeting_set_events($data); // Create meeting events if defined.
     }
 
     return $data->id;
@@ -157,7 +157,7 @@ function teams_meeting_add_instance($data, $mform) {
  * @param object $mform the form.
  * @return bool true if update ok and false in other cases.
  */
-function teams_meeting_update_instance($data, $mform) {
+function teamsmeeting_update_instance($data, $mform) {
     global $CFG, $DB, $USER;
 
     require_once($CFG->dirroot.'/mod/url/locallib.php');
@@ -178,7 +178,7 @@ function teams_meeting_update_instance($data, $mform) {
             $data->closedate = 0;
         }
 
-        $meeting = $DB->get_record('teams_meeting', array('id' => $data->instance));
+        $meeting = $DB->get_record('teamsmeeting', array('id' => $data->instance));
         if ($data->opendate != $meeting->opendate || $data->closedate != $meeting->closedate || $meeting->name != $data->name) {
             // We update the event dates.
             try {
@@ -199,9 +199,9 @@ function teams_meeting_update_instance($data, $mform) {
         $data->creator_id = (isset($data->creator_id)) ? $data->creator_id : $USER->id;
 
         $data->id = $data->instance;
-        teams_meeting_set_events($data); // Create meeting events if defined.
+        teamsmeeting_set_events($data); // Create meeting events if defined.
 
-        $DB->update_record('teams_meeting', $data);
+        $DB->update_record('teamsmeeting', $data);
 
         return true;
     }
@@ -214,18 +214,18 @@ function teams_meeting_update_instance($data, $mform) {
  * @param int $id the id of the teams instance to delete
  * @return bool true.
  */
-function teams_meeting_delete_instance($id) {
+function teamsmeeting_delete_instance($id) {
     global $DB;
 
-    if (!$team = $DB->get_record('teams_meeting', array('id' => $id))) {
+    if (!$team = $DB->get_record('teamsmeeting', array('id' => $id))) {
         return false;
     }
 
-    $cm = get_coursemodule_from_instance('teams_meeting', $id);
-    \core_completion\api::update_completion_date_event($cm->id, 'teams_meeting', $id, null);
+    $cm = get_coursemodule_from_instance('teamsmeeting', $id);
+    \core_completion\api::update_completion_date_event($cm->id, 'teamsmeeting', $id, null);
 
     // Note: all context files are deleted automatically.
-    $DB->delete_records('teams_meeting', array('id' => $team->id));
+    $DB->delete_records('teamsmeeting', array('id' => $team->id));
 
     return true;
 }
@@ -236,11 +236,11 @@ function teams_meeting_delete_instance($id) {
  * @param cm_info $coursemodule the course module.
  * @return cached_cm_info info
  */
-function teams_meeting_get_coursemodule_info($coursemodule) {
+function teamsmeeting_get_coursemodule_info($coursemodule) {
     global $CFG, $DB;
     require_once("$CFG->dirroot/mod/url/locallib.php");
 
-    if (!$resource = $DB->get_record('teams_meeting', array('id' => $coursemodule->instance),
+    if (!$resource = $DB->get_record('teamsmeeting', array('id' => $coursemodule->instance),
         'id, course, name, display, displayoptions, externalurl, intro, introformat, opendate, closedate, reuse_meeting, resource_teams_id, creator_id, timemodified')) {
         return null;
     }
@@ -251,7 +251,7 @@ function teams_meeting_get_coursemodule_info($coursemodule) {
     $display = url_get_final_display_type($resource);
 
     if ($display == RESOURCELIB_DISPLAY_POPUP) {
-        $fullurl = "$CFG->wwwroot/mod/teams_meeting/view.php?id=$coursemodule->id&amp;redirect=1";
+        $fullurl = "$CFG->wwwroot/mod/teamsmeeting/view.php?id=$coursemodule->id&amp;redirect=1";
         $options = empty($resource->displayoptions) ? array() : unserialize($resource->displayoptions);
         $width  = empty($options['popupwidth'])  ? 620 : $options['popupwidth'];
         $height = empty($options['popupheight']) ? 450 : $options['popupheight'];
@@ -264,7 +264,7 @@ function teams_meeting_get_coursemodule_info($coursemodule) {
 
     if ($coursemodule->showdescription) {
         // Convert intro to html. Do not filter cached version, filters run at display time.
-        $info->content = format_module_intro('teams_meeting', $resource, $coursemodule->id, false);
+        $info->content = format_module_intro('teamsmeeting', $resource, $coursemodule->id, false);
     }
 
     $course = get_course($resource->course); // Get cached course.
@@ -281,7 +281,7 @@ function teams_meeting_get_coursemodule_info($coursemodule) {
  */
 function get_office()
 {
-    return new Office365(get_config('mod_teams_meeting', 'tenant_id'), get_config('mod_teams_meeting', 'client_id'), get_config('mod_teams_meeting', 'client_secret'));
+    return new Office365(get_config('mod_teamsmeeting', 'tenant_id'), get_config('mod_teamsmeeting', 'client_id'), get_config('mod_teamsmeeting', 'client_secret'));
 }
 
 /**
@@ -290,10 +290,10 @@ function get_office()
  * @throws coding_exception
  * @throws dml_exception
  */
-function teams_meeting_set_events(the $meeting) {
+function teamsmeeting_set_events(the $meeting) {
     global $DB;
 
-    if ($events = $DB->get_records('event', array('modulename' => 'teams_meeting', 'instance' => $meeting->id))) {
+    if ($events = $DB->get_records('event', array('modulename' => 'teamsmeeting', 'instance' => $meeting->id))) {
         foreach ($events as $event) {
             $event = calendar_event::load($event);
             $event->delete();
@@ -306,11 +306,11 @@ function teams_meeting_set_events(the $meeting) {
     $event->courseid = $meeting->course;
     $event->groupid = 0;
     $event->userid = 0;
-    $event->modulename = 'teams_meeting';
+    $event->modulename = 'teamsmeeting';
     $event->instance = $meeting->id;
     $event->eventtype = 'open';
     $event->timestart = $meeting->opendate;
-    $event->visible = instance_is_visible('teams_meeting', $meeting);
+    $event->visible = instance_is_visible('teamsmeeting', $meeting);
     $event->timeduration = ($meeting->closedate - $meeting->opendate);
 
     if ($meeting->closedate && $meeting->opendate && $meeting->timeduration > 0) {
@@ -321,12 +321,12 @@ function teams_meeting_set_events(the $meeting) {
         // Separate start and end events.
         $event->timeduration  = 0;
         if ($meeting->opendate) {
-            $event->name = $meeting->name . get_string('opendate_session', 'mod_teams_meeting');
+            $event->name = $meeting->name . get_string('opendate_session', 'mod_teamsmeeting');
             calendar_event::create($event);
             unset($event->id); // So we can use the same object for the close event.
         }
         if ($meeting->closedate) {
-            $event->name = $meeting->name . get_string('closedate_session', 'mod_teams_meeting');
+            $event->name = $meeting->name . get_string('closedate_session', 'mod_teamsmeeting');
             $event->timestart = $meeting->closedate;
             $event->eventtype = 'close';
             calendar_event::create($event);
@@ -341,7 +341,7 @@ function teams_meeting_set_events(the $meeting) {
  * @param object $course the course.
  * @return does not return
  */
-function teams_meeting_print_workaround($meeting, $cm, $course) {
+function teamsmeeting_print_workaround($meeting, $cm, $course) {
     global $OUTPUT;
 
     url_print_header($meeting, $cm, $course);
@@ -364,7 +364,7 @@ function teams_meeting_print_workaround($meeting, $cm, $course) {
         $extra = '';
     }
 
-   echo teams_meeting_print_details_dates($meeting);
+   echo teamsmeeting_print_details_dates($meeting);
 
     echo '<div class="urlworkaround">';
     print_string('clicktoopen', 'url', "<a id='teams_resource_url' href=\"$fullurl\" $extra>$fullurl</a>");
@@ -372,7 +372,7 @@ function teams_meeting_print_workaround($meeting, $cm, $course) {
 
     echo '<br><div id="meeting_url_copydiv"><button class="btn btn-default" id="meeting_url_copybtn">';
     echo html_writer::tag('img', '', array('src' => $OUTPUT->image_url('e/insert_edit_link', 'core'), 'style' => 'margin-right: 5px;'));
-    echo get_string('copy_link', 'mod_teams_meeting'). '</button></div>';
+    echo get_string('copy_link', 'mod_teamsmeeting'). '</button></div>';
 
     // Script to copy the link.
     echo '<script>
@@ -399,18 +399,18 @@ function teams_meeting_print_workaround($meeting, $cm, $course) {
  * @return string the information about the meeting.
  * @throws coding_exception
  */
-function teams_meeting_print_details_dates($meeting, $format = 'html')
+function teamsmeeting_print_details_dates($meeting, $format = 'html')
 {
     global $OUTPUT;
     if ($meeting->opendate != 0) {
         $details = ($meeting->closedate != 0)
-            ? sprintf(get_string('dates_between', 'mod_teams_meeting'), date('d/m/Y H:i', $meeting->opendate), date('d/m/Y H:i', $meeting->closedate))
-            : sprintf(get_string('dates_from', 'mod_teams_meeting'), date('d/m/Y H:i', $meeting->opendate));
+            ? sprintf(get_string('dates_between', 'mod_teamsmeeting'), date('d/m/Y H:i', $meeting->opendate), date('d/m/Y H:i', $meeting->closedate))
+            : sprintf(get_string('dates_from', 'mod_teamsmeeting'), date('d/m/Y H:i', $meeting->opendate));
     } else if ($meeting->closedate != 0) {
-        $details = sprintf(get_string('dates_until', 'mod_teams_meeting'), date('d/m/Y H:i', $meeting->closedate));
+        $details = sprintf(get_string('dates_until', 'mod_teamsmeeting'), date('d/m/Y H:i', $meeting->closedate));
     }
     if ($details) {
-        $msg = sprintf(get_string('meetingavailable', 'mod_teams_meeting'), $details);
+        $msg = sprintf(get_string('meetingavailable', 'mod_teamsmeeting'), $details);
         $icon = html_writer::tag('img', '', array('src' => $OUTPUT->image_url('i/info'), 'style' => 'margin-right: 5px;'));
         return ($format == 'html') ? '<div>'. $icon . $msg .'</div><br/>' : $msg;
     }

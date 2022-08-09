@@ -16,9 +16,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'teams_meeting', language 'en'
+ * Strings for component 'teamsmeeting', language 'en'
  *
- * @package   mod_teams_meeting
+ * @package   mod_teamsmeeting
  * @copyright 2022 Anthony Durif, Université Clermont Auvergne
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -28,8 +28,8 @@ $string['modulename_help'] = 'Mod which permits to create a Teams online meeting
 $string['modulenameplural'] = 'Teams meetings';
 $string['pluginname'] = 'Teams meeting';
 $string['pluginadministration'] = 'Teams meeting';
-$string['teams_meeting:addinstance'] = 'Add a new Teams online meeting';
-$string['teams_meeting:view'] = 'View a Teams online meeting';
+$string['teamsmeeting:addinstance'] = 'Add a new Teams online meeting';
+$string['teamsmeeting:view'] = 'View a Teams online meeting';
 $string['privacy:metadata'] = 'Teams meeting plugin does not store or transmit any personal data.';
 $string['notunique'] = 'The email is not unique in Azure Active Directory.';
 $string['notfound'] = 'Email not found in Azure Active Directory.';

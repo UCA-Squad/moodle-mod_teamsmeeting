@@ -17,36 +17,36 @@
 /**
  * Settings for teams meeting plugin.
  *
- * @package    mod_teams_meeting
+ * @package    mod_teamsmeeting
  * @copyright  2022 Anthony Durif, Université Clermont Auvergne
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
-    $settings->add(new admin_setting_configtext('mod_teams_meeting/client_id',
+    $settings->add(new admin_setting_configtext('mod_teamsmeeting/client_id',
         'Application (client) ID',
         'Application (client) ID',
         ''
     ));
-    $settings->add(new admin_setting_configtext('mod_teams_meeting/tenant_id',
+    $settings->add(new admin_setting_configtext('mod_teamsmeeting/tenant_id',
         'Directory (tenant) ID',
         'Directory (tenant) ID',
         ''
     ));
-    $settings->add(new admin_setting_configtext('mod_teams_meeting/client_secret',
+    $settings->add(new admin_setting_configtext('mod_teamsmeeting/client_secret',
         'Application (client) secret',
         'Application (client) secret',
         ''
     ));
-    $settings->add(new admin_setting_configcheckbox('mod_teams_meeting/notif_mail',
-        get_string('notif_mail', 'mod_teams_meeting'),
-        get_string('notif_mail_help', 'mod_teams_meeting'),
+    $settings->add(new admin_setting_configcheckbox('mod_teamsmeeting/notif_mail',
+        get_string('notif_mail', 'mod_teamsmeeting'),
+        get_string('notif_mail_help', 'mod_teamsmeeting'),
         0
     ));
-    $settings->add(new admin_setting_configselect('mod_teams_meeting/meeting_default_duration',
-        get_string('meeting_default_duration', 'mod_teams_meeting'),
-        get_string('meeting_default_duration_help', 'mod_teams_meeting') ,
+    $settings->add(new admin_setting_configselect('mod_teamsmeeting/meeting_default_duration',
+        get_string('meeting_default_duration', 'mod_teamsmeeting'),
+        get_string('meeting_default_duration_help', 'mod_teamsmeeting') ,
         '+2 hours',
         array(
             '+30 minutes'   =>  get_string('numminutes', '',30),
