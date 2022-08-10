@@ -34,7 +34,7 @@ $redirect = optional_param('redirect', 0, PARAM_BOOL);
 
 if ($u) {  // Two ways to specify the module.
     $resource = $DB->get_record('teamsmeeting', array('id' => $u), '*', MUST_EXIST);
-    $cm = get_coursemodule_from_instance('teams', $resource->id, $resource->course, false, MUST_EXIST);
+    $cm = get_coursemodule_from_instance('teamsmeeting', $resource->id, $resource->course, false, MUST_EXIST);
 } else {
     $cm = get_coursemodule_from_id('teamsmeeting', $id, 0, false, MUST_EXIST);
     $resource = $DB->get_record('teamsmeeting', array('id' => $cm->instance), '*', MUST_EXIST);
@@ -83,7 +83,7 @@ if (!filter_var($resource->externalurl, FILTER_VALIDATE_URL)) {
 $event = \mod_teamsmeeting\event\course_module_viewed::create($params);
 $event->add_record_snapshot('course_modules', $cm);
 $event->add_record_snapshot('course', $course);
-$event->add_record_snapshot('teams', $resource);
+$event->add_record_snapshot('teamsmeeting', $resource);
 $event->trigger();
 
 // Update 'viewed' state if required by completion system.

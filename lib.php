@@ -144,7 +144,7 @@ function teamsmeeting_add_instance($data, $mform) {
         }
 
         $data->creator_id = $USER->id;
-        $data->id = $DB->insert_record('teams', $data); // Insert in database.
+        $data->id = $DB->insert_record('teamsmeeting', $data); // Insert in database.
         teamsmeeting_set_events($data); // Create meeting events if defined.
     }
 
@@ -186,7 +186,7 @@ function teamsmeeting_update_instance($data, $mform) {
                 $creator = $DB->get_record('user', array('id' => $meeting->creator_id));
                 $userid = $office->getUserId($creator->email);
             } catch (Throwable $th) {
-                new Exception(get_string('notfound', 'mod_teams'));
+                new Exception(get_string('notfound', 'mod_teamsmeeting'));
             }
             $teamsmeeting = $office->updateBroadcastEvent($meeting->resource_teams_id, $data, $creator);
             if ($data->reuse_meeting == 0) {
