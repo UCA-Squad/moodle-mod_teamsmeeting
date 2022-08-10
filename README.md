@@ -29,7 +29,7 @@ Installation
 - Download way:
 > Download the zip from <a href="https://github.com/UCA-Squad/moodle-mod_teamsmeeting/archive/refs/heads/main.zip" target="_blank">https://github.com/UCA-Squad/moodle-mod_teamsmeeting/archive/refs/heads/main.zip </a>, unzip it in mod/ folder and rename it "teamsmeeting" if necessary or install it from the "Install plugin" page if you have the right permissions.
  
-2. Get Microsoft Graph libs (https://packagist.org/packages/microsoft/microsoft-graph) used in the plugin. Go to the new teams/ folder and use the command ```composer install```.<br/>
+2. Get Microsoft Graph libs (https://packagist.org/packages/microsoft/microsoft-graph) used in the plugin. Go to the new teamsmeeting/ folder and use the command ```composer install```.<br/>
 You can also get the latest libs versions by using ```composer update```. 
   
 3. Then visit your Admin Notifications page to complete the installation.
