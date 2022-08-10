@@ -24,7 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2022080700; // The current plugin version (Date: YYYYMMDDXX).
+$plugin->version   = 2022080900; // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2019051100; // Requires this Moodle version
 $plugin->component = 'mod_teamsmeeting'; // Full name of the plugin (used for diagnostics)
 $plugin->cron      = 0;
