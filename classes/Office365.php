@@ -302,12 +302,12 @@ class Office365
 
     /**
      * Get the meeting.
-     * @param $meeting the moodle mod meeting object.
+     * @param $meeting moodle mod meeting object.
      * @return bool|Http\GraphResponse|mixed
      * @throws \Microsoft\Graph\Exception\GraphException
      * @throws dml_exception
      */
-    public function getMeetingObject(the $meeting)
+    public function getMeetingObject($meeting)
     {
         global $DB;
         if (!$meeting->reuse_meeting) {
