@@ -286,11 +286,11 @@ function teamsmeeting_get_office()
 
 /**
  * Add calendar events if startdate or/and closedate are enabled for the online meeting.
- * @param $meeting the online meeting.
+ * @param $meeting online meeting.
  * @throws coding_exception
  * @throws dml_exception
  */
-function teamsmeeting_set_events(the $meeting) {
+function teamsmeeting_set_events($meeting) {
     global $DB;
 
     if ($events = $DB->get_records('event', array('modulename' => 'teamsmeeting', 'instance' => $meeting->id))) {
