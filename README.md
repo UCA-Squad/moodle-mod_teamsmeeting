@@ -12,7 +12,8 @@ Requirements
 -> Tests on Moodle 3.7 to 3.11.0 (tests on older moodle versions not made yet).<br/>
 -> Tests on Moodle 4.x in progress<br/>
 - Composer on your computer/server
-- Have an Azure Active Directory web application registred (or rights to create one).
+- Have an Azure Active Directory web application registred (or rights to create one).<br/>
+- Note: There may be have conflits if you also use the <a href="https://github.com/UCA-Squad/moodle-mod_teams">mod_teams</a> plugin on the same Moodle instance.
 
 Create Azure Active Directory web application
 ------------

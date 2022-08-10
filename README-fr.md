@@ -12,7 +12,8 @@ Pré-requis
 -> Tests effectués sur des versions 3.7 à 3.11.0 (des tests sur des versions antérieures n'ont pas encore été effectués).<br/>
 -> Tests sur la version 4 en cours.<br/>
 - Composer installé sur votre machine/serveur.
-- Avoir créé une application sur l'Active Directory Azure (ou avoir les droits nécessaires pour en créer une).
+- Avoir créé une application sur l'Active Directory Azure (ou avoir les droits nécessaires pour en créer une).<br/>
+- Note: Des conflits peuvent exister si vous utilisez également le plugin <a href="https://github.com/UCA-Squad/moodle-mod_teams">mod_teams</a> sur la même instance Moodle.
 
 Création application Active Directory Azure
 ------------
